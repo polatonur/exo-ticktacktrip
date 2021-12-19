@@ -1,19 +1,23 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const { off } = require("process");
 const app = express();
 
 // use cors to avoid cors policy problems
 app.use(cors());
 
 // we will use plain text
-app.use(bodyParser.text({ type: "*/json" }));
+app.use(bodyParser.text());
 
 app.post("/", async (req, res) => {
   const text = req.body;
-
   try {
-    res.status(200).send(text);
+    const list = text.split("\n");
+    for (const item of list) {
+      console.log(item.replace(/\s+/g, " ").length);
+    }
+    res.status(200).send(text.replace(/\n/g, "✅\n"));
   } catch (error) {
     res.status(400).json({
       message: error.message,
