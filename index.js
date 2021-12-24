@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const { separateParagraphes } = require("./utils");
+const { justifyText } = require("./utils");
 const app = express();
 
 // use cors to avoid cors policy problems
@@ -13,7 +13,8 @@ app.use(bodyParser.text());
 app.post("/", async (req, res) => {
   const text = req.body;
   try {
-    const result = separateParagraphes(text);
+    const result = justifyText(text);
+    console.log("heyy");
     res.status(200).send(result);
   } catch (error) {
     res.status(400).json({
