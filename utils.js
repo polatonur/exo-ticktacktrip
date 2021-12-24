@@ -1,3 +1,53 @@
+const addEqually = (words, number) => {
+  const space = " ".repeat(number);
+  let result = words.join(space);
+  return result;
+};
+
+const addRandomly = (words, number) => {
+  let addedWords = [];
+  for (let i = 0; i < number; i++) {
+    // select random word to add space after this word (❌ <== not last word)
+    let randomWord = Math.floor(Math.random() * (words.length - 1));
+
+    while (addedWords.indexOf(words[randomWord]) !== -1) {
+      randomWord = Math.floor(Math.random() * (words.length - 1));
+    }
+    words[randomWord] += " ";
+    addedWords.push(words[randomWord]);
+  }
+  return words;
+};
+
+const addSpace = (words) => {
+  // calculate needed space to justify;
+  let sum = 0; //👈 needed space between each word  n-1
+  for (const word of words) {
+    sum += word.length;
+  }
+  const neededSpace = 80 - sum;
+  console.log("needed space ", neededSpace);
+  console.log(" sum is ==>", sum);
+  //step 1 => if needed space = words.length => add ane space between each word
+  if (neededSpace === words.length - 1) {
+    return addEqually(words, neededSpace);
+  }
+  //step 2 => if needed space < words.length => add space randomly;
+  if (neededSpace < words.length - 1) {
+    return words.join(" ");
+  }
+  // step 3 => if needed space > words.length firs do step 2 after do step 1
+  if (neededSpace > words.length - 1) {
+    console.log("step 3");
+    const equalSpace = Math.floor(neededSpace / (words.length - 1));
+    console.log("equal space is==>", equalSpace);
+    const randomSpace = neededSpace - equalSpace * (words.length - 1);
+    console.log("tandom space==>", randomSpace);
+    words = addRandomly(words, randomSpace);
+    return addEqually(words, equalSpace);
+  }
+};
+
 const justify80 = (str) => {
   // remove spaces
   str = str.replace(/\n/g, "").trim();
@@ -53,4 +103,4 @@ const separateParagraphes = (text) => {
   return result;
 };
 
-module.exports = { separateParagraphes };
+module.exports = { separateParagraphes, addEqually, addRandomly, addSpace };
