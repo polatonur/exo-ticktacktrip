@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const { off } = require("process");
+const { separateParagraphes } = require("./utils");
 const app = express();
 
 // use cors to avoid cors policy problems
@@ -13,11 +13,22 @@ app.use(bodyParser.text());
 app.post("/", async (req, res) => {
   const text = req.body;
   try {
-    const list = text.split("\n");
-    for (const item of list) {
-      console.log(item.replace(/\s+/g, " ").length);
-    }
-    res.status(200).send(text.replace(/\n/g, "✅\n"));
+    const result = separateParagraphes(text);
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(400).json({
+      message: error.message,
+    });
+  }
+});
+app.post("/test", async (req, res) => {
+  try {
+    const text = req.body;
+    const list = text.split(" ");
+    const response = fullJustify(list, 80);
+    res.status(200).json({
+      message: response,
+    });
   } catch (error) {
     res.status(400).json({
       message: error.message,
