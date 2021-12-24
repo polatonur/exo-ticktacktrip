@@ -4,6 +4,7 @@ const {
   addSpace,
   justifyText,
   justify80,
+  isEmailValid,
 } = require("../utils");
 
 test("should add 2  space between words and return new strin ", () => {
@@ -47,8 +48,41 @@ test("should crate an array of line words", () => {
 });
 
 test("should justify given text ", () => {
-  const text = "       Lorem";
+  const text = "       Lorem     \n\n   Lorem           ";
   const result = justifyText(text);
   console.log(result);
-  expect(result).toEqual("Lorem\n");
+  expect(result).toEqual("Lorem\nLorem\n");
+});
+
+test("should retrun true because email format is true ", () => {
+  const email = "x@x.com";
+  const result = isEmailValid(email);
+  expect(result).toBe(true);
+  const email2 = "x@x.io";
+  const result2 = isEmailValid(email2);
+  expect(result2).toBe(true);
+  const email3 = "xxx@xxx.com";
+  const result3 = isEmailValid(email3);
+  expect(result3).toBe(true);
+  const email4 = "x@x.comx";
+  const result4 = isEmailValid(email4);
+  expect(result4).toBe(true);
+});
+
+test("should retrun false because email format is false ", () => {
+  const email = "x.@x";
+  const result = isEmailValid(email);
+  expect(result).toBe(false);
+  const email2 = "x.@.c";
+  const result2 = isEmailValid(email2);
+  expect(result2).toBe(false);
+  const email3 = "@x.io";
+  const result3 = isEmailValid(email3);
+  expect(result3).toBe(false);
+  const email4 = "x.@x";
+  const result4 = isEmailValid(email4);
+  expect(result4).toBe(false);
+  const email5 = "x.@x.";
+  const result5 = isEmailValid(email5);
+  expect(result5).toBe(false);
 });

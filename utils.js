@@ -57,8 +57,8 @@ const addSpace = (words) => {
 };
 
 const justify80 = (str) => {
-  // remove spaces
-  str = str.replace(/\n/g, "").trim();
+  // remove line brakers and replace with space
+  str = str.replace(/\n/g, " ").trim();
   // separate words
   const words = str.split(/\s+/); // /\s+/ regex for one or more spaces
   // track length of line
@@ -131,4 +131,28 @@ const justifyText = (text) => {
   return result;
 };
 
-module.exports = { justifyText, addEqually, addRandomly, addSpace, justify80 };
+const isEmailValid = (email) => {
+  // we willl use basic validation  like x@x.x
+  const indexOfDot = email.indexOf(".");
+  const indexOfAt = email.indexOf("@");
+  if (
+    indexOfAt > 0 && // "@"is not first chararcter
+    indexOfDot !== email.length - 1 && // "." is not last character
+    indexOfAt !== -1 && // should contain "@" and "."
+    indexOfDot !== -1 &&
+    indexOfDot - indexOfAt > 1 // "@" comes before "."
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+module.exports = {
+  justifyText,
+  addEqually,
+  addRandomly,
+  addSpace,
+  justify80,
+  isEmailValid,
+};
