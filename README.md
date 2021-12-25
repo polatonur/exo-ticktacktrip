@@ -53,4 +53,4 @@ Bearer token needed to autenticate
 | -------------- | -------- | ----------- |
 | `Bearer token` | Yes      | user token  |
 
-[demo][https://onur-text-justify.herokuapp.com/]
+DEMO: [https://onur-text-justify.herokuapp.com/](https://onur-text-justify.herokuapp.com/)
