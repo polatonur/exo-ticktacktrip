@@ -1,6 +1,6 @@
 # TEXT-JUSTIFY API
 
-A Simple text justification API to, designed with Node.js, Express and Postgres
+A Simple text justification API, designed with NodeJS, Express and Postgres
 
 ### Stack
 
@@ -14,8 +14,10 @@ Prerequisites:
 
 #### Node
 
+--install dependencies
+
 ```
- install dependencies
+
 npm i
 ```
 
@@ -36,14 +38,14 @@ You have to make a Post request with a json body parameter like {email:"foo@bar.
 | ------- | ------ | -------- |
 | `email` | string | Yes      |
 
-### /api/justify(post)
+### /api/justify(POST)
 
 Allows users to justify a plain text.
 Max limit: 80 000 words per day.
 
-| Body | Type       | Required |
-| ---- | ---------- | -------- |
-| text | plain text | Yes      |
+| Body   | Type       | Required |
+| ------ | ---------- | -------- |
+| 'text' | plain text | Yes      |
 
 Bearer token needed to autenticate
 
