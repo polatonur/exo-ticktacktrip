@@ -31,8 +31,7 @@ const addSpace = (words) => {
     sum += word.length;
   }
   const neededSpace = 80 - sum;
-  console.log("needed space ", neededSpace);
-  console.log(" sum is ==>", sum);
+
   //step 1 => if needed space = words.length => add ane space between each word
   if (neededSpace === words.length - 1) {
     // console.log(addEqually(words, 1));
@@ -45,13 +44,9 @@ const addSpace = (words) => {
   }
   // step 3 => if needed space > words.length then first  step 2 after  step 1
   if (neededSpace > words.length - 1) {
-    console.log("step 3");
     const equalSpace = Math.floor(neededSpace / (words.length - 1));
-    console.log("equal space is==>", equalSpace);
     const randomSpace = neededSpace - equalSpace * (words.length - 1);
-    console.log("tandom space==>", randomSpace);
     words = addRandomly(words, randomSpace);
-    // console.log(addEqually(words, equalSpace));
     return addEqually(words, equalSpace);
   }
 };
@@ -101,10 +96,8 @@ const justifyText = (text) => {
     const justifiedParagraph = justify80(paragraph);
     separatedList.push(justifiedParagraph);
   }
-  // console.log(separatedList);
 
   // we have list of paragraphs and list of words to crate our justifiedParagraph
-
   let result = "";
   for (const list of separatedList) {
     let justifiedParagraph = "";
@@ -118,9 +111,6 @@ const justifyText = (text) => {
     result += justifiedParagraph;
     justifiedParagraph = "";
   }
-  // console.log("result is==>");
-  // console.log(result);
-  // console.log("result is==>");
   return result;
 };
 

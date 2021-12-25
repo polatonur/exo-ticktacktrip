@@ -51,7 +51,6 @@ test("should crate an array of line words", () => {
 test("should justify given text ", () => {
   const text = "       Lorem     \n\n   Lorem           ";
   const result = justifyText(text);
-  console.log(result);
   expect(result).toEqual("Lorem\nLorem\n");
 });
 

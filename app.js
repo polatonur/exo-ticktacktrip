@@ -23,7 +23,6 @@ const isAuthenticated = require("./middlewares/isAuthenticated");
 // JUSTIFY TEXT ROUTE
 app.post("/api/justify", isAuthenticated, async (req, res) => {
   const text = req.body;
-  console.log("text is ===>", typeof text);
   try {
     if (typeof text === "string") {
       const userId = req.user_id; //👈 this comes from isAuthenticated

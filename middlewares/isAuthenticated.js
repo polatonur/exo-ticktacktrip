@@ -6,18 +6,15 @@ const pool = new Pool({
 });
 
 const isAuthenticated = async (req, res, next) => {
-  console.log(req.headers?.authorization);
   const token = req.headers?.authorization?.replace("Bearer ", "");
-  console.log("autenticating......");
-  console.log("token is ===>", token);
+
   try {
     if (token) {
       const response = await pool.query(
         "SELECT user_id FROM users WHERE token = $1",
         [token]
       );
-      console.log("row is==>");
-      console.log(response.rows[0]);
+
       if (response.rows.length > 0) {
         req.user_id = response.rows[0].user_id; //👈 we will use this token to access user information
         return next();
