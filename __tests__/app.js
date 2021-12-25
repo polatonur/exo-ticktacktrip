@@ -1,13 +1,13 @@
 const request = require("supertest");
 const app = require("../app.js");
-import { newDb } from "pg-mem";
+// import { newDb } from "pg-mem";
 
-const pool = newDb();
-const results = db.public
-  .many(`CREATE TABLE users(user_id serial PRIMARY KEY, email VARCHAR(100) token VARCHAR(16));
-         CREATE TABLE requests (request_id serial PRIMARY KEY,user_id INTEGER REFERENCES users(user_id),  total_words NUMERIC created_on TIME CURRENT_TIMESTAMP)`);
+// const pool = newDb();
+// const results = db.public
+//   .many(`CREATE TABLE users(user_id serial PRIMARY KEY, email VARCHAR(100) token VARCHAR(16));
+//          CREATE TABLE requests (request_id serial PRIMARY KEY,user_id INTEGER REFERENCES users(user_id),  total_words NUMERIC created_on TIME CURRENT_TIMESTAMP)`);
 
-// During the tests we will create a fake user
+// // During the tests we will create a fake user
 // At the end we will delete all requests made by fake user
 // finally we will delete fake user
 let fakeUser = {
