@@ -7,14 +7,14 @@ const {
   isEmailValid,
 } = require("../utils");
 
-test("should add 2  space between words and return new strin ", () => {
+test("should add 2 space between words and return new string ", () => {
   const list = ["My", "name", "is", "Onur"];
 
   const result = addEqually(list, 2);
   expect(result).toBe("My  name  is  Onur");
 });
 
-test("should add 1 space after two random word of given list ", () => {
+test("should add 1 space after two random word of given list and last length must be 2 more than first length", () => {
   const list = ["My", "name", "is", "Onur"];
   const sumOfLength = (arr) => {
     let sum = 0;
@@ -38,6 +38,7 @@ test("should create a justified line with given list of words ", () => {
   const result = addSpace(words);
   expect(result.length).toBe(80);
 });
+
 test("should crate an array of line words", () => {
   const text = "Lorem ipsum";
   const text1 = " test     test";

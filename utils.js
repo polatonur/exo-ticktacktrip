@@ -86,13 +86,7 @@ const justify80 = (str) => {
       lines.push(line);
     }
   });
-  for (const line of lines) {
-    let count = 0;
-    for (const word of line) {
-      count += word.length;
-    }
-    count = 0;
-  }
+
   return lines;
 };
 
@@ -100,7 +94,6 @@ const justifyText = (text) => {
   //before justifying  we will separate paragraphes
   //detect "/n" =>  if there are  two "\n" back to back replace with "⏎"
   // After delete all remaining "\n" and
-  // use split and "⏎" separator to create  list of  paragraphes
   const paragrahps = text.split(/\n\n+/); // /\n\n+/ ===> regex two or more \n
 
   const separatedList = [];
@@ -108,7 +101,7 @@ const justifyText = (text) => {
     const justifiedParagraph = justify80(paragraph);
     separatedList.push(justifiedParagraph);
   }
-  console.log(separatedList);
+  // console.log(separatedList);
 
   // we have list of paragraphs and list of words to crate our justifiedParagraph
 
@@ -125,9 +118,9 @@ const justifyText = (text) => {
     result += justifiedParagraph;
     justifiedParagraph = "";
   }
-  console.log("result is==>");
-  console.log(result);
-  console.log("result is==>");
+  // console.log("result is==>");
+  // console.log(result);
+  // console.log("result is==>");
   return result;
 };
 
